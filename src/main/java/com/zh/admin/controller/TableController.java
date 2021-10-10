@@ -1,7 +1,12 @@
 package com.zh.admin.controller;
 
+import com.zh.admin.bean.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @ClassName TableController
@@ -32,7 +37,12 @@ public class TableController {
      * @return java.lang.String
      */
     @GetMapping("/dynamic_table")
-    public String dynamicTable(){
+    public String dynamicTable(Model model){
+        List<User> users = Arrays.asList(new User("zh", "123"),
+                new User("zh1", "123"),
+                new User("zh2", "123"),
+                new User("zh3", "123"));
+        model.addAttribute("users",users);          //将用户列表放在请求域中
         return "table/dynamic_table";
     }
 

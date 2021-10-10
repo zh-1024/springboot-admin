@@ -50,14 +50,6 @@ public class IndexController {
 
     @GetMapping("/main.html")
     public String mainPage(HttpSession session, Model model){
-        Object user = session.getAttribute("user");
-        if(user!=null)
         return "main";
-        else
-        {
-            model.addAttribute("msg","请先登陆");
-            return "login";
-        }
-
     }
 }
